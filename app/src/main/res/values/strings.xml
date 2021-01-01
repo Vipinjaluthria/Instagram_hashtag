@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Instagram_hashtag</string>
+    <string name="facebook_app_id">761143834747523</string>
+    <string name="fb_login_protocol_scheme">fb761143834747523</string>
+</resources>
