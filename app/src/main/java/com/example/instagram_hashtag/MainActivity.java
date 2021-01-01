@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancel() {
+                        Toast.makeText(MainActivity.this, "you canceled the process", Toast.LENGTH_SHORT).show();
                         // App code
                     }
 

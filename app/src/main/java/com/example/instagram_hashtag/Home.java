@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.instagram_hashtag.Model.Posts;
+import com.facebook.AccessToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity {
-    String url="https://graph.facebook.com/v9.0/17842159696070100/top_media?user_id=17841401380563890&fields=id,permalink,media_url,media_type&access_token=EAAK0QZAvkooMBADB8eXyRtp59OultrbVggPp2BrMiEJ970EpXzIXqXYaqxntO3QueRfwUVZBLMyitYGQw06J1kPs5xOZB7e4IwoJPVgQX5S4ZCgYIhle6IG5I6ZAKc5yZAcO52fHZBslhrVFAwf3tZBFsX8Smr0p2xfuumxaJPS894rSWAwx6nY53ZBkQLCIqjQtJ0ooZB3s9Wu4IiMsYnUcfnqoPRg3AV2C6S4x6becH1jwZDZD";
+    String url="https://graph.facebook.com/v9.0/17842159696070100/top_media?user_id=17841401380563890&fields=id,permalink,media_url,media_type&access_token=";
     private RequestQueue requestQueue;
     private ArrayList<Posts> postsList;
     private RecyclerView recyclerView;
@@ -37,9 +38,11 @@ public class Home extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         requestQueue= Volley.newRequestQueue(this);
+        String v=AccessToken.getCurrentAccessToken().getToken();
+        url=url+v;
+        Toast.makeText(this, ""+v, Toast.LENGTH_SHORT).show();
         fetch();
     }
-
     private void fetch() {
         postsList=new ArrayList<>();
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null,
